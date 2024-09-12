@@ -99,7 +99,7 @@ class TokenList(T.List[Token]):
             iterable = TokenList(iterable)
 
         super(TokenList, self).extend(iterable)
-
+        self.metadata = getattr(self, "metadata", Metadata())
         self.metadata.update(iterable.metadata)
 
     def _dict_to_token_and_set_defaults(self, token: T.Union[dict, Token]) -> Token:
